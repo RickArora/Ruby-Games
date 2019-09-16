@@ -91,27 +91,93 @@ end
 
 [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
 
-def my_zip(*array)
-  new_array = []
-  self.each_with_index do |el_outer, i|
-    array_temp = []
-    self.each do |el_inner|
-      array_temp.push(el_inner * i)
+def my_zip(*array) # takes an in put of n arguments named array
+  self
+  concatenated_arguments = array.unshift(self)
+  concatenated_arguments
+  new_array = [] # empty array 
+  self.each_with_index do |el_outer, i| # iterates through selfs array 
+    array_temp = [] # empty array
+    concatenated_arguments.each do |el_inner| 
+      array_temp.push(el_inner[i])
     end
+    while array_temp.length < self.length
+        array_temp.push("nil")
+      end
     new_array.push(array_temp)
   end
   new_array
 end
 
+"testing my_zip"
+
+
 a = [ 4, 5, 6 ]
 b = [ 7, 8, 9 ]
-p [1, 2, 3].my_zip(a, b) # => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
-p a.my_zip([1,2], [8])   # => [[4, 1, 8], [5, 2, nil], [6, nil, nil]]
-p [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
+ [1, 2, 3].my_zip(a, b) # => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+ a.my_zip([1,2], [8])   # => [[4, 1, 8], [5, 2, nil], [6, nil, nil]]
+ [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
+
 
 c = [10, 11, 12]
 d = [13, 14, 15]
 [1, 2].my_zip(a, b, c, d)    # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
 
+def my_rotate(rotateIndex=1)
+  if rotateIndex < 0
+    rotateIndex = self.length + rotateIndex 
+  end
+  if rotateIndex > self.length
+    rotateIndex = rotateIndex % self.length
+  end
+  self[rotateIndex..self.length] + self[0...rotateIndex]
 end
+
+a = [ "a", "b", "c", "d" ]
+a.my_rotate         #=> ["b", "c", "d", "a"]
+a.my_rotate(2)      #=> ["c", "d", "a", "b"]
+a.my_rotate(-3)     #=> ["b", "c", "d", "a"]
+a.my_rotate(15)     #=> ["d", "a", "b", "c"]
+
+def my_join(seperator = "")
+  concatenated_string = ""
+  self.each do |el|
+    concatenated_string = concatenated_string + el + seperator
+  end
+  concatenated_string
+end
+
+a = [ "a", "b", "c", "d" ]
+a.my_join         # => "abcd"
+a.my_join("$")    # => "a$b$c$d"
+
+def my_reverse
+  copyOfSelf = []
+  self.reverse_each do |el|
+    copyOfSelf.push(el)
+  end
+  copyOfSelf
+end
+
+p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+p [ 1 ].my_reverse               #=> [1]
+
+end
+
+def factors(num)
+  listOfFactors = []
+  (2...num).each do |el| 
+    if num % el == 0
+      listOfFactors.push(el)
+    end
+  end
+  listOfFactors
+end
+
+p "factors test"
+
+p factors(10)
+
+p factors(7)
+
 
