@@ -221,11 +221,10 @@ end
 def substrings(string)
   substring = []
   string = string.chars
- # byebug
   string.each_with_index do |el, i|
-    string.each do |el_inner|
-      substring.push(string[i..j])
-      j = i + 1
+    (i...string.length).each do |el_inner|
+      substring.push(string[i..el_inner].join())
+      #byebug
     end
   end
   substring
