@@ -9,9 +9,9 @@ class Array
   end
   
   return_value = [1, 2, 3].my_each do |num|
-    puts num
+   # puts num
   end.my_each do |num|
-    puts num
+   # puts num
   end
   
   def my_select(&prc)
@@ -74,7 +74,7 @@ class Array
   a.my_all? { |num| num > 1 } # => false
   a.my_all? { |num| num < 4 } # => true
 
-p "testing my_flatten"
+#p "testing my_flatten"
 
 def my_flatten() 
   flat_array = []
@@ -159,10 +159,8 @@ def my_reverse
   copyOfSelf
 end
 
-p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
-p [ 1 ].my_reverse               #=> [1]
-
-end
+#p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+#p [ 1 ].my_reverse               #=> [1]
 
 def factors(num)
   listOfFactors = []
@@ -174,10 +172,63 @@ def factors(num)
   listOfFactors
 end
 
-p "factors test"
+# p "factors test"
 
-p factors(10)
+# p factors(10)
 
-p factors(7)
+# p factors(7)
+
+def bubble_sort!(&prc)
+  self.each_with_index do |el_one, i| 
+     self.each_with_index do |el_two, j|
+      if proc.call(el_one, el_two) == 1 
+        self[i],self[j] = self[j],self[i]
+      end
+    #if self[i] > self[j]
+    # self[i],self[j] = self[j],self[i]
+#  end
+end
+end
+self
+end
+
+#p [10,2,11,4,9,7,8].bubble_sort!{|el1, el2| el1 <=> el2}
+
+def bubble_sort(&prc)
+  copy_of_self = self.dup
+  copy_of_self.each_with_index do |el_one, i| 
+     copy_of_self.each_with_index do |el_two, j|
+      if proc.call(el_one, el_two) == 1 
+        copy_of_self[i],copy_of_self[j] = copy_of_self[j],copy_of_self[i]
+      end
+    #if self[i] > self[j]
+    # self[i],self[j] = self[j],self[i]
+#  end
+end
+end
+copy_of_self
+end
+
+#p [10,2,11,4,9,7,8].bubble_sort{|el1, el2| el1 <=> el2}
 
 
+#def bubble_sort(&prc)
+  
+#end
+
+end
+
+def substrings(string)
+  substring = []
+  string = string.chars
+ # byebug
+  string.each_with_index do |el, i|
+    string.each do |el_inner|
+      substring.push(string[i..j])
+      j = i + 1
+    end
+  end
+  substring
+end
+
+p substrings("cat")
