@@ -13,7 +13,7 @@ class Game
         if character.length == 1 && character.count("a-zA-Z") == 1
             @fragment = fragment + character
             dictionary.each do |word|
-                if word.subset?(fragment)
+                if word.index(fragment) == 0
                     return true
                 end
             end
@@ -41,4 +41,4 @@ class Game
 end
 
 new_game = Game.new
-new_game.valid_play?("h")
+new_game.valid_play?("l")
