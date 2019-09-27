@@ -9,10 +9,12 @@ class Player
         p "Make a guess below, it must be one character"
         guess = gets
         guess = guess.chomp
-        alert_invalid_guess(guess)
+        return guess
     end
 
     def alert_invalid_guess
+        p "entry was invlaid please try again"
+        self.guess
     end
 
 end

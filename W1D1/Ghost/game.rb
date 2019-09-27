@@ -2,6 +2,7 @@ require 'byebug'
 require 'set'
 class Game
     attr_accessor :fragment, :players, :dictionary, :current_player
+   
     def initialize(list_of_players)
         words = File.readlines("dictionary.txt", chomp: true)
         @fragment = ""
@@ -18,14 +19,18 @@ class Game
                     return true
                 end
             end
-        else 
-            p "invalid play, try again"
+        else
+            @current_player.alert_invalid_guess 
             return false
         end
     end
 
     def play_round 
-        # implement methods below and call them here
+        while !(valid_play?(@current_player.guess) && dictionary.subset(fragment.to_set))
+            p "valid play, next players turn"
+            @current_player = nextplayer!
+        end
+            p @current_player + "wins"
     end
 
     def current_player()
@@ -44,11 +49,4 @@ class Game
         @current_player.guess
     end
 
-    def play_around
-        # ????
-    end
-
 end
-
-new_game = Game.new
-p new_game.valid_play?("l")
