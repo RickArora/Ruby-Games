@@ -43,8 +43,11 @@ class Game
     end
 
     def nextplayer!()
-        p @players.class
-        @players = @players[(@players.index(@current_player))+1]
+        if @players[players.length] == @current_player
+            @current_player = players[0]
+        elsif 
+            @current_player = @players[(@players.index(@current_player))+1]
+        end
     end
 
     def take_turn(player)
