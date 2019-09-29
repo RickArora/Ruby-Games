@@ -1,6 +1,6 @@
 require 'byebug'
 require 'set'
-require_relative('player.rb')
+require_relative 'player'
 class Game
     attr_accessor :fragment, :players, :dictionary, :current_player
    
@@ -29,7 +29,7 @@ class Game
     def play_round 
         while !(valid_play?(@current_player.guess) && dictionary.subset?(fragment.split().to_set))
             p "valid play, next players turn"
-            @current_player = nextplayer!
+            nextplayer!
         end
             p @current_player + "wins"
     end
@@ -45,7 +45,7 @@ class Game
     def nextplayer!()
         if @players[players.length-1] == @current_player
             @current_player = @players[0]
-        elsif 
+        else
             @current_player = @players[(@players.index(@current_player))+1]
         end
     end
