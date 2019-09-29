@@ -43,8 +43,8 @@ class Game
     end
 
     def nextplayer!()
-        if @players[players.length] == @current_player
-            @current_player = players[0]
+        if @players[players.length-1] == @current_player
+            @current_player = @players[0]
         elsif 
             @current_player = @players[(@players.index(@current_player))+1]
         end
@@ -60,5 +60,4 @@ players_list = []
 players_list.push(Player.new('Ricky'))
 players_list.push(Player.new('Sharan'))
 game = Game.new(players_list)
-p game.players.class
 game.play_round
