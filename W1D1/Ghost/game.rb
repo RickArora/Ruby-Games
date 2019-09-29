@@ -27,12 +27,12 @@ class Game
     end
 
     def play_round 
-        while (valid_play?(@current_player.guess) && !(dictionary.subset?(fragment.split().to_set)))
+        while (valid_play?(@current_player.guess) && !(fragment.split.to_set.subset?(dictionary)))
             p "valid play, next players turn"
             nextplayer!
         end
-        if dictionary.subset?(fragment.split().to_set)
-            p @current_player.name + "wins"
+        if fragment.split.to_set.subset?(dictionary)
+            p @current_player.name + " wins"
         end
     end
 
