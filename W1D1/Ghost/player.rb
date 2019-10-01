@@ -11,10 +11,4 @@ class Player
         guess = guess.chomp
         return guess
     end
-
-    def alert_invalid_guess
-        p "entry was invlaid please try again"
-        self.guess
-    end
-
 end
