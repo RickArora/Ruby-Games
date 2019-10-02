@@ -17,22 +17,21 @@ class Game
             dictionary.each do |word|
                 if word.index(fragment+character) == 0
                     @fragment = fragment + character
-                    p "enter"
                     return true
                 end
             end
-            p "invalid guess, no word exists. Player loses: " + @current_player.name
             return false
         end
     end
     
     def play_round 
-        while (valid_play?(@current_player.guess) && !(fragment.split.to_set.subset?(dictionary)))
+        while (take_turn(@current_player))
+            if fragment.split.to_set.subset?(dictionary)
+                p @current_player.name + " loses"
+                return "Game over"
+            end
             p "valid play, next players turn"
             nextplayer!
-        end
-        if fragment.split.to_set.subset?(dictionary)
-            p @current_player.name + " loses"
         end
     end
     
@@ -53,13 +52,14 @@ class Game
     end
     
     def take_turn(player)
-        @current_player.guess
+        while valid_play?(player.guess) != true
+        end
+        return true
     end
-    
 end
-
-players_list = []
-players_list.push(Player.new('Ricky'))
-players_list.push(Player.new('Sharan'))
-game = Game.new(players_list)
-game.play_round
+    
+    players_list = []
+    players_list.push(Player.new('Ricky'))
+    players_list.push(Player.new('Sharan'))
+    game = Game.new(players_list)
+    game.play_round
