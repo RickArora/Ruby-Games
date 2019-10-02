@@ -21,8 +21,8 @@ class Game
                     return true
                 end
             end
-            p "invalid guess, no word exists, try again"
-            self.play_round
+            p "invalid guess, no word exists. This player loses: " + @current_player.name
+            return false
         end
     end
     
