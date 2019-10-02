@@ -14,7 +14,6 @@ class Player
 
     def alert_invalid_guess
         p "entry was invalid please try again"
-        self.guess
     end
 
 end

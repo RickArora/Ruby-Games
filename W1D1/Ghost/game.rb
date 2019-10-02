@@ -53,6 +53,7 @@ class Game
     
     def take_turn(player)
         while valid_play?(player.guess) != true
+            player.alert_invalid_guess
         end
         return true
     end
