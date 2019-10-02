@@ -32,7 +32,7 @@ class Game
             nextplayer!
         end
         if fragment.split.to_set.subset?(dictionary)
-            p @current_player.name + " wins"
+            p @current_player.name + " loses"
         end
     end
     
