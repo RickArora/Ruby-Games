@@ -21,7 +21,7 @@ class Game
                     return true
                 end
             end
-            p "invalid guess, no word exists. This player loses: " + @current_player.name
+            p "invalid guess, no word exists. Player loses: " + @current_player.name
             return false
         end
     end
@@ -32,7 +32,7 @@ class Game
             nextplayer!
         end
         if fragment.split.to_set.subset?(dictionary)
-            p @current_player.name + " wins"
+            p @current_player.name + " loses"
         end
     end
     
