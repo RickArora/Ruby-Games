@@ -22,7 +22,7 @@ class Game
                 end
             end
             p "invalid guess, no word exists, try again"
-            @current_player.guess
+            self.play_round
         end
     end
     
