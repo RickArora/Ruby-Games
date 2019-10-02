@@ -1,2 +1,4 @@
 # ruby_part_two
-Part 2 of some Ruby practice I am doing
+
+
+Creating games with Ruby as a means to learn Ruby. Feel free to pull and play some of them.
