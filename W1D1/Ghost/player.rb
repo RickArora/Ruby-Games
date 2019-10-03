@@ -10,6 +10,7 @@ class Player
         p "Make a guess below, it must be one character"
         guess = gets
         guess = guess.chomp
+        p guess
         return guess
     end
 
@@ -18,7 +19,7 @@ class Player
     end
 
     def increment_loss
-        losses = losses + 1
+        self.losses = self.losses + 1
     end
 
 end

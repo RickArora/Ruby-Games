@@ -37,10 +37,11 @@ class Game
     def round_over(player)
         p player.name + " loses this round"
         player.increment_loss
-        while(player.guess < 5)
+        while(player.losses < 5)
             p "another round has started"
+            play_round
         end
-        return "Game over"
+        return "Game over" + player.name + " loses the game"
     end
 
     def current_player()
