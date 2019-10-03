@@ -10,7 +10,6 @@ class Player
         p "Make a guess below, it must be one character"
         guess = gets
         guess = guess.chomp
-        p guess
         return guess
     end
 

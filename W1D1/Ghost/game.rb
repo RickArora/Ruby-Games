@@ -37,8 +37,10 @@ class Game
     def round_over(player)
         p player.name + " loses this round"
         player.increment_loss
-        while(player.losses < 5)
+        while(player.losses < 2)
             p "another round has started"
+            @fragment = ""
+            p @fragment
             play_round
         end
         return "Game over" + player.name + " loses the game"
