@@ -1,8 +1,9 @@
 class Player
-    attr_accessor :name, :guess
+    attr_accessor :name, :guess, :losses
 
     def initialize(name)
         @name = name
+        @losses = 0
     end
 
     def guess
@@ -14,6 +15,10 @@ class Player
 
     def alert_invalid_guess
         p "entry was invalid please try again"
+    end
+
+    def increment_loss
+        losses = losses + 1
     end
 
 end

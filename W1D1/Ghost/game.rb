@@ -27,8 +27,7 @@ class Game
     def play_round 
         while (take_turn(@current_player))
             if fragment.split.to_set.subset?(dictionary)
-                p @current_player.name + " loses this round"
-                return "Game over"
+                round_over(@current_player)
             end
             p "valid play, next players turn"
             nextplayer!
@@ -36,10 +35,14 @@ class Game
     end
 
     def round_over(player)
-        
+        p player.name + " loses this round"
+        player.increment_loss
+        while(player.guess < 5)
+            p "another round has started"
+        end
+        return "Game over"
     end
 
-    def 
     def current_player()
         @current_player
     end
