@@ -37,11 +37,6 @@ class Game
     def round_over(player)
         p player.name + " loses this round"
         player.increment_loss
-        while(player.losses < 5)
-            p "another round has started"
-            play_round
-        end
-        return "Game over" + player.name + " loses the game"
     end
 
     def current_player()
@@ -66,6 +61,21 @@ class Game
         end
         return true
     end
+
+    def run(player)
+         while(player.losses < 5)
+            p "another round has started"
+            play_round
+        end
+        return "Game over" + player.name + " loses the game"
+    end
+
+    def display_standings
+    end
+
+    def record 
+    end
+
 end
     
     players_list = []
