@@ -2,7 +2,7 @@ require 'byebug'
 require 'set'
 require_relative 'player'
 class Game
-    attr_accessor :fragment, :players, :dictionary, :current_player
+    attr_accessor :fragment, :players, :dictionary, :current_player, :score
     
     def initialize(list_of_players)
         words = File.readlines("dictionary.txt", chomp: true)
@@ -23,15 +23,18 @@ class Game
                     return true
                 end
             end
-            p @fragment
+            p @fragment + "end"
             return false
         end
     end
     
     def play_round 
-        while (!take_turn(@current_player))
+        while (take_turn(@current_player) || !score.key(3))
             if fragment.split.to_set.subset?(dictionary)
+                p @score
+                p "word spelled"
                 round_over(@current_player)
+                @fragment = ""
             end
             p "valid play, next players turn"
             p @current_player.losses
@@ -69,8 +72,10 @@ class Game
     end
 
     def run()
-        play_round
-        p "Game over " + @current_player.name + " loses the game"
+        #while(!score.key(5))
+            play_round
+     #   end
+      #  p "Game over " + score.key(5) + " loses the game"
     end
 
     def display_standings
@@ -79,9 +84,6 @@ class Game
     def record 
     end
 
-    def play_game
-        play_round
-    end
 end
     
     players_list = []
