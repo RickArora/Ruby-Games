@@ -15,6 +15,7 @@ class Game
     def valid_play?(character)
         character = character.chomp
         if character.length == 1 && character.count("a-zA-Z") == 1
+            p @fragment
             dictionary.each do |word|
                 if word.index(fragment+character) == 0
                     @fragment = fragment + character
@@ -38,8 +39,8 @@ class Game
 
     def round_over(player)
         p player.name + " loses this round"
-        player.increment_loss
         @fragment = ""
+        player.increment_loss
         return "Game over" + player.name + " loses the game"
     end
 
@@ -65,6 +66,21 @@ class Game
         end
         return true
     end
+
+    def run(player)
+         while(player.losses < 5)
+            p "another round has started"
+            play_round
+        end
+        return "Game over" + player.name + " loses the game"
+    end
+
+    def display_standings
+    end
+
+    def record 
+    end
+
 end
     
     players_list = []
