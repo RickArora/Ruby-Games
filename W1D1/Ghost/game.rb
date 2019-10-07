@@ -10,6 +10,7 @@ class Game
         @players = list_of_players
         @dictionary = words.to_set
         @current_player = players[0]
+        @score = @players.map { |player| [player.name, player.losses] }.to_h
     end
     
     def valid_play?(character)
@@ -28,18 +29,18 @@ class Game
     end
     
     def play_round 
-        while (take_turn(@current_player))
+        while (!take_turn(@current_player))
             if fragment.split.to_set.subset?(dictionary)
                 round_over(@current_player)
             end
             p "valid play, next players turn"
+            p @current_player.losses
             nextplayer!
         end
     end
 
     def round_over(player)
         p player.name + " loses this round"
-        @fragment = ""
         player.increment_loss
         return "Game over" + player.name + " loses the game"
     end
@@ -67,12 +68,9 @@ class Game
         return true
     end
 
-    def run(player)
-         while(player.losses < 5)
-            p "another round has started"
-            play_round
-        end
-        return "Game over" + player.name + " loses the game"
+    def run()
+        play_round
+        p "Game over " + @current_player.name + " loses the game"
     end
 
     def display_standings
@@ -81,10 +79,13 @@ class Game
     def record 
     end
 
+    def play_game
+        play_round
+    end
 end
     
     players_list = []
     players_list.push(Player.new('Ricky'))
     players_list.push(Player.new('Sharan'))
     game = Game.new(players_list)
-    game.play_round
+    game.run
