@@ -41,7 +41,7 @@ class Game
         p "valid play, next players turn"
         nextplayer!
     end
-
+    
     def round_over(player)
         @score[@current_player.name] = @score[@current_player.name] + 1
         if !score.key(5)
@@ -51,7 +51,7 @@ class Game
             exit(true)
         end
     end
-
+    
     def current_player()
         @current_player
     end
@@ -74,19 +74,19 @@ class Game
         end
         return true
     end
-
+    
     def run()
         play_round
     end
-
+    
     def game_over(player)
         p "GHOST" + @current_player.name + " has lost the game"
         p "Game over"
     end
 end
-    
-    players_list = []
-    players_list.push(Player.new('Ricky'))
-    players_list.push(Player.new('Sharan'))
-    game = Game.new(players_list)
-    game.run
+
+players_list = []
+players_list.push(Player.new('Ricky'))
+players_list.push(Player.new('Sharan'))
+game = Game.new(players_list)
+game.run
