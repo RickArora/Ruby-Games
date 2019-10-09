@@ -29,7 +29,8 @@ class Game
     end
     
     def play_round 
-        while (take_turn(@current_player) || !score.key(3))
+        while (take_turn(@current_player) || !score.key(5))
+            p !@score.key(5)
             if fragment.split.to_set.subset?(dictionary)
                 p @score
                 p "word spelled"
@@ -44,7 +45,7 @@ class Game
 
     def round_over(player)
         p player.name + " loses this round"
-        player.increment_loss
+        @score[@current_player.name] = @score[@current_player.name] + 1
         return "Game over" + player.name + " loses the game"
     end
 
