@@ -83,13 +83,6 @@ class Game
         p "GHOST" + @current_player.name + " has lost the game"
         p "Game over"
     end
-
-    def display_standings
-    end
-
-    def record 
-    end
-
 end
     
     players_list = []
