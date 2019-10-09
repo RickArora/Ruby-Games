@@ -36,15 +36,20 @@ class Game
                 round_over(@current_player)
                 @fragment = ""
             end
-            p "valid play, next players turn"
-            nextplayer!
         end
         round_over(@current_player)
+        p "valid play, next players turn"
+        nextplayer!
     end
 
     def round_over(player)
         @score[@current_player.name] = @score[@current_player.name] + 1
-        p player.name + " loses this round her current score is " + @score[@current_player.name].to_s
+        if !score.key(5)
+            p player.name + " loses this round their current score is " + @score[@current_player.name].to_s
+        else 
+            game_over(player)
+            exit(true)
+        end
     end
 
     def current_player()
@@ -71,10 +76,12 @@ class Game
     end
 
     def run()
-        #while(!score.key(5))
-            play_round
-     #   end
-      #  p "Game over " + score.key(5) + " loses the game"
+        play_round
+    end
+
+    def game_over(player)
+        p "GHOST" + @current_player.name + " has lost the game"
+        p "Game over"
     end
 
     def display_standings
