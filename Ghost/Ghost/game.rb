@@ -1,6 +1,6 @@
 require 'byebug'
 require 'set'
-require_relative 'player'
+require_relative 'Player'
 class Game
     attr_accessor :fragment, :players, :dictionary, :current_player, :score
     
