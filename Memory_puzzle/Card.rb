@@ -19,6 +19,6 @@ class Card
             @face_value.to_s 
         end
 
-        def ==
+        def ==(card_to_compare_with)
         end
 end
