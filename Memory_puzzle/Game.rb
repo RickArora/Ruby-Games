@@ -1,16 +1,13 @@
 class Game
 
-  def hide
+  def play
   end
 
-  def reveal
+  def previous_guess
   end
 
-  def to_s
+  def clear
+    system("clear")
   end
-
-  def ==
-  end
-
 
 end
