@@ -1,6 +1,6 @@
 class Board
 
-  def populate
+  def initalize(array_of_cards)
   end
 
   def render
