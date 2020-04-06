@@ -10,13 +10,13 @@ class PolyTreeNode
   end
 
   def parent=(parent)
-    if !parent.nil?
-      @parent.children.delete(self)
-      @parent = parent
-      @parent.children.push(self)
-      @parent.children = @parent.children.uniq
+    if !parent.nil? # checks if the param passed down (parent) is nil
+      @parent.children.delete(self) # delete's the current node from the parent's child list
+      @parent = parent # set's our instance variable to the parent param
+      @parent.children.push(self) #pushes self onto the new parent's child list
+      @parent.children = @parent.children.uniq # remove duplicate children from the array children.
     else 
-      @parent = nil
+      @parent = nil 
     end
   end
 
