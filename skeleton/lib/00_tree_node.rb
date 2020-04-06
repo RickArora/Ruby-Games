@@ -14,7 +14,7 @@ class PolyTreeNode
      # @parent.children.delete(self)
       @parent = parent
       @parent.children.push(self)
-      @children = @parent.children.uniq
+      @parent.children = @parent.children.uniq
     else 
       @parent = nil
     end
