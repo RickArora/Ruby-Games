@@ -1,14 +1,20 @@
 class PolyTreeNode
   def initialize(value)
+    self.value = value
+    children = []
+    parent = nil
   end
 
-  def parent 
+  def parent
+    return self.parent 
   end
 
   def children
+    return self.children
   end
 
-  def value 
+  def value
+    return self.value 
   end
-  
+
 end
