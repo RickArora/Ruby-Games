@@ -9,7 +9,14 @@ class PolyTreeNode
     return @parent 
   end
 
-  def parent=
+  def parent=(parent)
+    if !parent.nil?
+      @parent = parent
+      @parent.children.push(self)
+      @children = @parent.children.uniq!
+    else 
+      @parent = nil
+    end
   end
 
   def children
