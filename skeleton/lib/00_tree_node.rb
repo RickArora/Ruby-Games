@@ -11,9 +11,10 @@ class PolyTreeNode
 
   def parent=(parent)
     if !parent.nil?
+     # @parent.children.delete(self)
       @parent = parent
       @parent.children.push(self)
-      @children = @parent.children.uniq!
+      @children = @parent.children.uniq
     else 
       @parent = nil
     end
