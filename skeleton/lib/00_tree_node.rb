@@ -1,20 +1,23 @@
 class PolyTreeNode
   def initialize(value)
-    self.value = value
-    children = []
-    parent = nil
+    @value = value
+    @children = []
+    @parent = nil
   end
 
   def parent
-    return self.parent 
+    return @parent 
+  end
+
+  def parent=
   end
 
   def children
-    return self.children
+    return @children
   end
 
   def value
-    return self.value 
+    return @value 
   end
 
 end
