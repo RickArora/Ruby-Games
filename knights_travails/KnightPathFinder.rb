@@ -1,0 +1,1 @@
+kpf = KnightPathFinder.new([])
