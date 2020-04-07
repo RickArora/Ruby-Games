@@ -26,6 +26,14 @@ class PolyTreeNode
     return @children
   end
 
+  def add_child(newNode)
+    @children.push(newNode)
+  end
+
+  def children=(new_children_arr)
+    @children = new_children_arr
+  end
+
   def value
     return @value 
   end
