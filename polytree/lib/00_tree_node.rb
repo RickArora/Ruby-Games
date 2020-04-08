@@ -63,13 +63,14 @@ class PolyTreeNode
     queue = []
     queue.push(self)
     while !queue.nil?
-      if queue[0].value == target_value
+      if queue.first.value == target_value
         return queue
       else 
         queue.delete_at(0)
         queue.push(@children)
       end
     end
+    return nil
   end
 
 end
