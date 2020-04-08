@@ -38,4 +38,15 @@ class PolyTreeNode
     return @value 
   end
 
+  def dfs(target_value)
+    if self == target_value
+      return self 
+    else 
+      @children.each {|el| dfs(target_value)}
+    end
+  end
+
+  def bfs(target_value)
+  end
+
 end
