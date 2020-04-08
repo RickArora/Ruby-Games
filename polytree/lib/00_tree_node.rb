@@ -26,8 +26,17 @@ class PolyTreeNode
     return @children
   end
 
-  def add_child(newNode)
-    @children.push(newNode)
+  def add_child(new_node)
+    @children.push(new_node)
+    new_node.parent = self
+  end
+
+  def remove_child(remove_node)
+    if remove_node.parent.nil? 
+      raise "Not a child" 
+    end
+    remove_node.parent = nil
+    @children.delete(remove_node)
   end
 
   def children=(new_children_arr)
@@ -39,14 +48,28 @@ class PolyTreeNode
   end
 
   def dfs(target_value)
-    if self == target_value || self.nil?
+    if self.value == target_value
       return self 
-    else 
-      @children.each {|el| dfs(el)}
+    else
+      @children.each do |el| 
+        res = el.dfs(target_value) 
+        return res unless res.nil? 
+      end
     end
+    return nil
   end
 
   def bfs(target_value)
+    queue = []
+    queue.push(self)
+    while !queue.nil?
+      if queue[0].value == target_value
+        return queue
+      else 
+        queue.delete_at(0)
+        queue.push(@children)
+      end
+    end
   end
 
 end
