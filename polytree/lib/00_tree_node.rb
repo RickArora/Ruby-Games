@@ -62,12 +62,12 @@ class PolyTreeNode
   def bfs(target_value)
     queue = []
     queue.push(self)
-    while !queue.nil?
-      if queue.first.value == target_value
-        return queue
+    while !queue.empty?
+      res = queue.shift
+      if res.value == target_value
+        return res
       else 
-        queue.delete_at(0)
-        queue.push(@children)
+        queue.concat(res.children)
       end
     end
     return nil
